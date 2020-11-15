@@ -1,0 +1,40 @@
+nav {
+    position: static;
+    width: 100%;
+    background-color: #993399;
+    }             
+
+
+nav ul#menu-home {
+     margin:0;
+     padding:0;
+     text-align: left;
+    }
+
+nav ul#menu-home li {
+    list-style-type:none;
+      display: inline;
+    }
+
+nav ul#menu-home li a {
+    padding: 30px 40px;
+    text-decoration: none;
+
+    color:#FFF;
+    display: inline-block;
+    margin-right: -3px;
+    font-family: Roboto, sans-serif;
+    font-size: 80%;
+    letter-spacing: 0.60
+    }
+
+nav ul#menu-home li a:hover {
+    background-color: rgba(213,26,44,1);
+    }
+
+#Loadtable {
+    margin: 0 auto;
+    clear: both;
+    width: 100%;
+    table-layout: fixed;
+    }
