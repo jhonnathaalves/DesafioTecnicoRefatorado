@@ -22,91 +22,15 @@
        
         
         <section id="table"></section>
+		<script src="_js/criarTabela.js" type="text/javascript"></script>
         <!-- Datatables -->
         <script src="https://code.jquery.com/jquery-3.5.1.js" type="text/javascript"></script>
         <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js" type="text/javascript"></script> 
         <script src="https://cdn.datatables.net/1.10.22/js/dataTables.foundation.min.js" type="text/javascript"></script>
         <!--------------------------->
-        <script>
-            
-            function Criar_Tabela() {
-                var url = "https://jsonplaceholder.typicode.com/albums";
-                var xhttp = new XMLHttpRequest()
-                xhttp.open("GET", url, true);
-                
-                xhttp.onreadystatechange = function(){
-                    if ( xhttp.readyState == 4 && xhttp.status == 200 ) {            
-                        var json =  xhttp.responseText
-                        var list = JSON.parse(json);
-
-                        var cols = [];
-                        //recupera todas as chaves para ser o header            
-                        for (var i = 0; i < list.length; i++){
-                            for (var k in list[i]){ 
-                                if (cols.indexOf(k) === -1){ 
-
-                                    cols.push(k); 
-                                } 
-                            } 
-                        } 
-
-                        // Criando os elementos da tabela 
-                        var table = document.createElement("table");
-                        table.id = "tabela"
-                        var thead = document.createElement("thead");
-                        var tbody = document.createElement("tbody");
-
-                        var tr = document.createElement("tr");
-
-                        //Criando o cabecalho
-                        for (var i = 0; i < cols.length; i++) { 
-
-                            var th = document.createElement("th");
-                            var texto = document.createTextNode(cols[i]);
-                            th.appendChild(texto);
-                            tr.appendChild(th);      
-                        }
-
-
-                        thead.appendChild(tr);
-                        table.appendChild(thead);                        
-                        
-                        // Populando a tabela com os dados 
-                        
-                        
-                        for (var i = 0; i < list.length; i++) { 
-                            var trBody = document.createElement("tr");
-                            for (var j = 0; j < cols.length; j++) { 
-
-                                var td = document.createElement("td");
-                                var texto = document.createTextNode(list[i][cols[j]]);
-                                td.appendChild(texto); 
-                                trBody.appendChild(td);                                
-                            }
-                            tbody.appendChild(trBody)
-                            table.appendChild(tbody);
- 
-                        } 
-
-
-                        var el = document.getElementById("table"); 
-                        el.innerHTML = ""; 
-                        el.appendChild(table);
-                        
-                        ///datatables implementado paginacao ordenacao busca  
-                        $(document).ready(function() {
-                            $('#tabela').DataTable();
-                        } );
-
-
-                    }
-                }
-
-                xhttp.send();
-                
-            }   
-            
-            Criar_Tabela();            
+        <script>            
+            var url = "https://jsonplaceholder.typicode.com/albums";        
+            Criar_Tabela(url);            
         
         </script>  
 
